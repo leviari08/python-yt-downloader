@@ -62,5 +62,31 @@ def convert_to_mp3(video_file_name):
         audio.write_audiofile(f'videos/{video_file_name[:-4]}.mp3')
 
 
+def menu():
+    '''
+    a menu.
+    '''
+    print(' ' * 5 + 'python yt downloader' + ' ' * 5)
+    print('-' * 30)
+
+    print('1. download a video (mp4)')
+    print('2. download a song (mp3)')
+    print('Q. quit')
+    print()
+
+    choice = ''
+    while choice not in ['1', '2', 'Q']:
+        choice = input(': ')
+
+    if choice == 'Q':
+        exit()
+    elif choice == '1':
+        url = input('Enter the url: ')
+        download_video(url)
+    elif choice == '2':
+        url = input('Enter the url: ')
+        download_audio(url)
+
+
 if __name__ == "__main__":
-    print('python yt downloader')
+    menu()
