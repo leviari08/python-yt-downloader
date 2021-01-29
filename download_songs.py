@@ -1,3 +1,5 @@
+#!./venv/Scripts/python.exe
+
 from downloader import download_audio
 import os
 

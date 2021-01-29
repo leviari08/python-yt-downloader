@@ -1,3 +1,5 @@
+#!./venv/Scripts/python.exe
+
 # For legal reasons, this script has been made only of the sake of learning #
 
 from pytube import YouTube
