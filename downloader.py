@@ -6,6 +6,7 @@ from pytube import YouTube
 from moviepy.editor import VideoFileClip
 import os
 
+DOWNLOAD_FOLDER = 'videos'
 
 def download_video(url):
     '''
@@ -18,7 +19,7 @@ def download_video(url):
         print('No stream is available')
         return
 
-    if os.path.isfile(f'videos/{final_stream.default_filename}'):
+    if os.path.isfile(f'{DOWNLOAD_FOLDER}/{final_stream.default_filename}'):
         print('File already exists')
         return
 
@@ -33,7 +34,7 @@ def download_audio(url):
     yt = YouTube(url)
     final_stream = yt.streams.get_highest_resolution()
 
-    if os.path.isfile(f'videos/{final_stream.default_filename[:-4]}.mp3'):
+    if os.path.isfile(f'{DOWNLOAD_FOLDER}/{final_stream.default_filename[:-4]}.mp3'):
         print('File already exists')
         return
 
@@ -46,7 +47,7 @@ def download_audio(url):
     (also happens in ffmpeg)
     '''
     convert_to_mp3(final_stream.default_filename)
-    os.remove(f'videos/{final_stream.default_filename}')
+    os.remove(f'{DOWNLOAD_FOLDER}/{final_stream.default_filename}')
 
     '''
     "Get highest bitrate audio stream for given codec (defaults to mp4)"
@@ -59,9 +60,9 @@ def convert_to_mp3(video_file_name):
     '''
     converts mp4 file to mp3 file
     '''
-    with VideoFileClip(f'videos/{video_file_name}') as video:
+    with VideoFileClip(f'{DOWNLOAD_FOLDER}/{video_file_name}') as video:
         audio = video.audio
-        audio.write_audiofile(f'videos/{video_file_name[:-4]}.mp3')
+        audio.write_audiofile(f'{DOWNLOAD_FOLDER}/{video_file_name[:-4]}.mp3')
 
 
 def menu():
