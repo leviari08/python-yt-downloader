@@ -89,7 +89,3 @@ def menu():
     elif choice == '2':
         url = input('Enter the url: ')
         download_audio(url)
-
-
-if __name__ == "__main__":
-    menu()
