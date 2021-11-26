@@ -78,10 +78,10 @@ def menu() -> None:
     print()
 
     choice = ''
-    while choice not in ['1', '2', 'Q']:
+    while choice.lower() not in ['1', '2', 'q']:
         choice = input(': ')
 
-    if choice == 'Q':
+    if choice.lower() == 'q':
         exit()
     elif choice == '1':
         url = input('Enter the url: ')
