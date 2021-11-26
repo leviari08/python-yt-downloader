@@ -6,6 +6,8 @@ from downloader import download_audio
 import os
 from multiprocessing.dummy import Pool as ThreadPool
 
+DEFAULT_FILE_NAME = 'songs.txt'
+DEFAULT_NUMBER_OF_THREADS = 8
 
 def download_songs_from_file(file_name: str) -> None:
     '''
@@ -40,3 +42,6 @@ def download_songs_from_file_multithreading(file_name: str, number_of_threads: i
 
     pool.close()
     pool.join()
+
+if __name__ == "__main__":
+    download_songs_from_file_multithreading(file_name=DEFAULT_FILE_NAME, number_of_threads=DEFAULT_NUMBER_OF_THREADS)
