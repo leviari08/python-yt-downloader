@@ -7,7 +7,7 @@ import os
 from multiprocessing.dummy import Pool as ThreadPool
 
 
-def download_songs_from_file(file_name):
+def download_songs_from_file(file_name: str) -> None:
     '''
     downloads all songs from the given file
     '''
@@ -21,7 +21,7 @@ def download_songs_from_file(file_name):
             download_audio(line.strip())
 
 
-def download_songs_from_file_multithreading(file_name, number_of_threads):
+def download_songs_from_file_multithreading(file_name: str, number_of_threads: int) -> None:
     '''
     downloads all songs from the given file, with multiple threads
     useful for bulk downloads

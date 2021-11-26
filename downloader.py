@@ -8,7 +8,7 @@ import os
 
 DOWNLOAD_FOLDER = 'videos'
 
-def download_video(url):
+def download_video(url: str) -> None:
     '''
     downloads a video from url
     '''
@@ -27,7 +27,7 @@ def download_video(url):
     final_stream.download('videos/')
 
 
-def download_audio(url):
+def download_audio(url: str) -> None:
     '''
     downloads a video from url and converting it to audio
     '''
@@ -56,7 +56,7 @@ def download_audio(url):
     # another_stream = yt.streams.get_audio_only()
 
 
-def convert_to_mp3(video_file_name):
+def convert_to_mp3(video_file_name: str) -> None:
     '''
     converts mp4 file to mp3 file
     '''
@@ -65,7 +65,7 @@ def convert_to_mp3(video_file_name):
         audio.write_audiofile(f'{DOWNLOAD_FOLDER}/{video_file_name[:-4]}.mp3')
 
 
-def menu():
+def menu() -> None:
     '''
     a menu.
     '''
@@ -89,3 +89,7 @@ def menu():
     elif choice == '2':
         url = input('Enter the url: ')
         download_audio(url)
+
+
+if __name__ == "__main__":
+    menu()
