@@ -8,6 +8,7 @@ import os
 
 DOWNLOAD_FOLDER = 'videos'
 
+
 def download_video(url: str) -> None:
     '''
     downloads a video from url
@@ -33,8 +34,13 @@ def download_audio(url: str) -> None:
     '''
     yt = YouTube(url)
     final_stream = yt.streams.get_highest_resolution()
+    print(f'Downloading audio {yt.title}')
 
-    if os.path.isfile(f'{DOWNLOAD_FOLDER}/{final_stream.default_filename[:-4]}.mp3'):
+    # remove .mp4 extention
+    filename_without_extention = \
+        os.path.splitext(final_stream.default_filename)
+
+    if os.path.isfile(f'{DOWNLOAD_FOLDER}/{filename_without_extention}.mp3'):
         print('File already exists')
         return
 
@@ -69,13 +75,19 @@ def menu() -> None:
     '''
     a menu.
     '''
-    print(' ' * 5 + 'python yt downloader' + ' ' * 5)
-    print('-' * 30)
+    margin = 3
+    title = 'python yt downloader'
 
-    print('1. download a video (mp4)')
-    print('2. download a song (mp3)')
-    print('Q. quit')
-    print()
+    print(' ' * margin + title + ' ' * margin +
+          '\n' + '-' * (2 * margin + len(title)))
+
+    menu_options = [
+        '1. download a video (mp4)',
+        '2. download a song (mp3)',
+        'Q. quit'
+    ]
+
+    print('\n'.join(menu_options))
 
     choice = ''
     while choice.lower() not in ['1', '2', 'q']:
